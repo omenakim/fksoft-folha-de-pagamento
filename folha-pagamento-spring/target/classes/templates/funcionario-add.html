@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Folha de pagamento</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<nav class="purple">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Folha de Pagamento</a>
+    </div>
+</nav>
+<div class="container">
+    <h4>
+        Criar Funcionário
+    </h4>
+    <div class="row">
+        <div th:if="${mensagem}" th:text="${mensagem}"/>
+        <form class="col s12" method="post" action="#" th:action="@{/funcionarios/salvar}" th:object="${funcionarioForm}">
+            <div class="input-field">
+                <input th:field="*{nome}" id="func-nome" type="text" class="validate">
+                <label for="func-nome">Nome</label>
+                <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+            </div>
+            <div class="input-field">
+                <input th:field="*{sobrenome}" id="func-sobrenome" type="text" class="validate">
+                <label for="func-sobrenome">Sobrenome</label>
+                <span th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}"></span>
+            </div>
+            <div class="input-field">
+                <input th:field="*{salarioBruto}" id="func-sal-bruto" type="number" class="validate">
+                <label for="func-sal-bruto">Salário Bruto</label>
+                <span th:if="${#fields.hasErrors('salarioBruto')}" th:errors="*{salarioBruto}"></span>
+            </div>
+            <button type="submit" class="waves-effect waves-light btn">
+                <i class="material-icons left">save</i>Salvar
+            </button>
+            <a href="/funcionarios" class="waves-effect waves-light btn">
+                <i class="material-icons left">undo</i>Voltar
+            </a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

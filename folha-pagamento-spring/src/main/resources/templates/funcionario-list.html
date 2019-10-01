@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Folha de pagamento</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<nav class="purple">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Folha de Pagamento</a>
+    </div>
+</nav>
+<div class="container">
+    <h4>
+        Lista de Funcionários
+    </h4>
+    <a href="/funcionarios/novo" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Incluir</a>
+    <table class="striped highlight responsive-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="funcionario : ${tabelaFuncionarios}">
+            <td th:text="${funcionario.id}"></td>
+            <td>
+                <a th:href="@{/funcionarios/{id}(id=${funcionario.id})}" th:text="${funcionario.nomeCompleto}">
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
